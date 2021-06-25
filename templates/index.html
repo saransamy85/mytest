@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block tittle %}
+<title>Home</title>
+{% endblock %}
+
+{% block content %}
+<br>
+<br>
+<div class="row">
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4">
+        <form action="" method="POST">
+            <div class="card">
+                <div class="card-header text-center">Register</div>
+                <div class="card-body">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" name="uname" required>
+                    <br>
+                    <input type="submit" class="btn btn-success w-100">
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-lg-4"></div>
+</div>
+<br>
+<div class="row">
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4">
+        {% for i in da %}
+            {{i.id}}
+            {{i.name}}
+            <br>
+        {% endfor %}
+    </div>
+    <div class="col-lg-4"></div>
+</div>
+{% with message=get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for cate,msg in messages %}
+            {{cate}}    |   {{msg}}
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+{% endblock %}
